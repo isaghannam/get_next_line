@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 11:59:38 by ighannam          #+#    #+#             */
-/*   Updated: 2025/07/31 14:11:41 by ighannam         ###   ########.fr       */
+/*   Created: 2025/07/31 14:13:29 by ighannam          #+#    #+#             */
+/*   Updated: 2025/07/31 14:15:00 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {

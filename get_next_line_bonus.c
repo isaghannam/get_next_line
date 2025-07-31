@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ighannam <ighannam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 11:59:18 by ighannam          #+#    #+#             */
-/*   Updated: 2025/07/31 16:08:16 by ighannam         ###   ########.fr       */
+/*   Created: 2025/07/31 14:13:00 by ighannam          #+#    #+#             */
+/*   Updated: 2025/07/31 16:36:53 by ighannam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin_free(char *dst, char *src)
 {
@@ -124,24 +124,21 @@ void	ft_form_leftovers(char **leftovers, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*leftovers;
+	static char	*leftovers[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!leftovers)
+	if (!leftovers[fd])
 	{
-		leftovers = ft_calloc(1, 1);
-		if (!leftovers)
+		leftovers[fd] = ft_calloc(1, 1);
+		if (!leftovers[fd])
 			return (NULL);
 	}
-	ft_form_leftovers(&leftovers, fd);
-	line = ft_extract_line(leftovers);
-	leftovers = ft_update_leftovers(leftovers, line);
+	ft_form_leftovers(&(leftovers[fd]), fd);
+	line = ft_extract_line(leftovers[fd]);
+	leftovers[fd] = ft_update_leftovers(leftovers[fd], line);
 	if (!line || line[0] == '\0')
-	{
-		free (leftovers);
-		leftovers = NULL;
-	}		
+		free (leftovers[fd]);
 	return (line);
 }
